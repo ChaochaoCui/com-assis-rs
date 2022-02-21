@@ -1,0 +1,23 @@
+# LICENSE BEGIN
+# This file is part of the SixtyFPS Project -- https://sixtyfps.io
+# Copyright (c) 2021 Olivier Goffart <olivier.goffart@sixtyfps.io>
+# Copyright (c) 2021 Simon Hausmann <simon.hausmann@sixtyfps.io>
+#
+# SPDX-License-Identifier: GPL-3.0-only
+# This file is also available under commercial licensing terms.
+# Please contact info@sixtyfps.io for more information.
+# LICENSE END
+[target.aarch64-unknown-linux-gnu]
+image = "ghcr.io/sixtyfpsui/sixtyfps/aarch64-unknown-linux-gnu"
+[target.armv7-unknown-linux-gnueabihf]
+image = "ghcr.io/sixtyfpsui/sixtyfps/armv7-unknown-linux-gnueabihf"
+[target.riscv64gc-unknown-linux-gnu]
+image = "ghcr.io/sixtyfpsui/sixtyfps/riscv64gc-unknown-linux-gnu"
+
+[build.env]
+passthrough = [
+    "SIXTYFPS_NO_QT",
+    "SIXTYFPS_STYLE",
+    "SIXTYFPS_TEST_FILTER",
+    "SIXTYFPS_INTERPRETER_ERROR_WHITELIST",
+]

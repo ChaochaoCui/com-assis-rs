@@ -1,0 +1,68 @@
+import { ComboBox, HorizontalBox } from "std-widgets.slint";
+
+export struct SeraiParam := {
+  baudRate: string,
+  dataBit: string,
+  stopBit: string,
+  oddOreven: string,
+}
+
+ComboxBoxWithLabel := HorizontalLayout {
+  property <string> label <=> t.text;
+  property <string> current-value <=> c.current-value;
+  property model <=> c.model;
+  alignment: start;
+  t := Text {
+    vertical-alignment: TextVerticalAlignment.center;
+    } 
+  c := ComboBox {
+    selected(port) => { debug(current-index); 
+                      debug(current-value);
+                      }
+  }
+}
+
+export AppWindow := Window {
+  width: 500px;
+  height: 500px;
+  property<[string]> ports;
+  property<[string]> baudrates;
+  property<string> current-port;
+  property<string> current-baudrate;
+  property<string> current-databit;
+  property<string> current-stopbit;
+  property<string> current-even-odd;
+ 
+  VerticalLayout { 
+  //  height: 60px;
+  //  width: 180px;
+    spacing: 5px;
+    ComboxBoxWithLabel {
+      label: "串口:";
+      model: ports;
+      current-value <=> root.current-port;
+    }
+    ComboxBoxWithLabel {
+      label: "波特率:";
+      model: baudrates;
+      current-value <=> root.current-baudrate;
+    }
+    ComboxBoxWithLabel {
+      label: "数据位:";
+      model: ["7", "8"];
+      current-value <=> root.current-databit;
+    }
+    ComboxBoxWithLabel {
+      label: "停止位:";
+      model: ["1", "1.5"];
+      current-value <=> root.current-stopbit;
+    }
+    ComboxBoxWithLabel {
+      label: "奇偶:";
+      model: ["None", "Even", "Odd"];
+      current-value <=> root.current-even-odd;
+    }
+  }
+  
+
+}

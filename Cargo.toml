@@ -1,0 +1,15 @@
+[package]
+name = "com-assis-rs"
+version = "0.1.0"
+authors = ["Chaochao Cui <cuichaochao916@gmail.com>"]
+edition = "2021"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+slint = { version = "0.2.0" }
+serialport = { version = "4.0.1" }
+
+[build-dependencies]
+slint-build = "0.2.0"
